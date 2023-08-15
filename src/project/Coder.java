@@ -29,7 +29,12 @@ public class Coder extends User{
 	@Override
 	public String toString() {
 		return "Coder [skills=" + skills + ", id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", phoneNum=" + phoneNum + "]";
+				+ ", email=" + email + ", password=" + password + ", phoneNum=" + phoneNum + "]";
 	}
+	
+
+
+
+	
 	
 }

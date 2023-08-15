@@ -16,11 +16,9 @@ package project;
 	}
 
 
-
 	public String getId() {
 		return id;
 	}
-
 
 
 	public void setId(String id) {
@@ -28,11 +26,9 @@ package project;
 	}
 
 
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 
 	public void setFirstName(String firstName) {
@@ -40,11 +36,9 @@ package project;
 	}
 
 
-
 	public String getLastName() {
 		return lastName;
 	}
-
 
 
 	public void setLastName(String lastName) {
@@ -52,11 +46,9 @@ package project;
 	}
 
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 
 	public void setEmail(String email) {
@@ -64,23 +56,9 @@ package project;
 	}
 
 
-
-	public long getPhoneNum() {
-		return phoneNum;
-	}
-
-
-
-	public void setPhoneNum(long phoneNum) {
-		this.phoneNum = phoneNum;
-	}
-
-
-
 	public String getPassword() {
 		return password;
 	}
-
 
 
 	public void setPassword(String password) {
@@ -88,6 +66,17 @@ package project;
 	}
 
 
+	public long getPhoneNum() {
+		return phoneNum;
+	}
 
-//	abstract int registration();
+
+	public void setPhoneNum(long phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+
+	
+
+
+	
 }
