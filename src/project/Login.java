@@ -27,6 +27,7 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 	
 	 @Override
 	public int printMenu() {
+		 System.out.println();
 		System.out.println("Press 1 if you want to login as a coder");
 		System.out.println("Press 2 if you want to login as a buyer");
 		choice2 = sc.nextInt();
@@ -35,10 +36,12 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 	 
 //		This menu is printed once the coder logs in successfully
 	private int printCoderMenu() {
+		System.out.println();
 		System.out.println("Press 1 to view available list of projects");
 		System.out.println("Press 2 to bid for projects");
 		System.out.println("Press 3 to view your assigned project");
-		System.out.println("Press 4 to logout");
+		System.out.println("Press 4 if you have completed your assigned project");
+		System.out.println("Press 5 to logout");
 		choice2 = sc.nextInt();
 		System.out.println();
 		return choice2;
@@ -47,6 +50,7 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 	
 //		This menu is printed once the coder logs in successfully
 	private int printBuyerMenu() {
+		System.out.println();
 		System.out.println("Press 1 to view your added projects");
 		System.out.println("Press 2 to add project for bidding");
 		System.out.println("Press 3 to view bids");
@@ -220,6 +224,17 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 
 	}
 	
+	protected void completeProject(String tempWorkingCoder) {
+		System.out.println("Enter the project id on which you were working: ");
+		String tempComp = sc.next();
+		if(detailsOfProjects.containsKey(tempComp) && detailsOfProjects.get(tempComp).getAssignCoder().equalsIgnoreCase(tempWorkingCoder)) {
+			detailsOfProjects.get(tempComp).setStatus("Completed");
+			coderGang.get(tempWorkingCoder).setWorkingProject(null);
+			
+		}
+		
+	}
+	
 	
 	public void checkChoice() {
 		int ch = printMenu();
@@ -244,14 +259,19 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 //					 Now once we log in successfully, we loop unless the user signs out
 					 while(true) {
 						 ch = printCoderMenu();
-						 if(ch == 4)
+						 if(ch == 5)
 							 break; //i.e we log out from coder portal
+						 else if(ch==4) {
+							 completeProject(logEmail);
+						 }
 						 else if(ch==3) {
-							 if(coderGang.get(logEmail)==null) {
+							 
+							 if(coderGang.get(logEmail).getWorkingProject() == null) {
 								 System.out.println("You have not yet won a project! ");
 							 }
-							 else if(coderGang.get(logEmail)!=null) {
-								 coderGang.get(logEmail).getWorkingProject();								 
+							 else {
+								 System.out.println("Your assigned project is: ");
+								 System.out.println(coderGang.get(logEmail).getWorkingProject());								 
 							 }
 						 }
 						 else if(ch==2) {
