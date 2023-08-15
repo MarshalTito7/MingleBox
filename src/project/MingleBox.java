@@ -16,7 +16,7 @@ public class MingleBox {
 			}
 			else if(choice1 == 2) {
 				r1.checkChoice();
-				System.out.println(r1.toString());
+//				System.out.println(r1.toString());
 			}
 			else if(choice1 == 3) {
 				break; //When user enters the number 3 in the main menu the program exits

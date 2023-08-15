@@ -34,10 +34,10 @@ public class Register implements menuPrint {
 		getDetails();
 		System.out.println("Enter your main skill: ");
 		skill = sc.next();
-		Coder tempCode = new Coder(id, firstName, lastName, email, password, phoneNum, skill);
+		Coder tempCode = new Coder(id, firstName, lastName, email, password, phoneNum, skill, null);
 		if(!coderGang.containsKey(email)) {
 			coderGang.put(email, tempCode);
-			System.out.println(tempCode.toString());
+//			System.out.println(tempCode.toString());
 			return true;
 		}
 		else {
@@ -71,7 +71,7 @@ public class Register implements menuPrint {
 	public void checkChoice() {
 		int ch = printMenu();
 		if(ch == 1) {
-			System.out.println("Register as a coder");
+			System.out.println("REGISTER AS A CODER");
 			if(regCoder()) {
 				System.out.println("Successfully Registered");
 			}//Enforcing checks whether the user could be registered
@@ -84,7 +84,7 @@ public class Register implements menuPrint {
 		}
 		
 		else if(ch == 2) {
-			System.out.println("Register as a buyer");
+			System.out.println("Register AS A BUYER");
 			if(regBuyer()) {
 				System.out.println("Successfully Registered");
 			}
@@ -101,7 +101,14 @@ public class Register implements menuPrint {
 				+ ", password=" + password + ", skill=" + skill + ", phoneNum=" + phoneNum + "]";
 	}
 
-	
+
+	public static HashMap<String, Buyer> getBuyerGang() {
+		return buyerGang;
+	}
+
+	public static void setBuyerGang(HashMap<String, Buyer> buyerGang) {
+		Register.buyerGang = buyerGang;
+	}	
 	
 	
 
