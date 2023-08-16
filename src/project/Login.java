@@ -295,7 +295,13 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 							 }
 						 }
 						 else if(ch==2) {
-							 placeBids();
+							 if(coderGang.get(logEmail).getWorkingProject() != null) {
+								 System.out.println("You cannot place bids as you are already working on a project: ");
+//								 Check whether coder is already working on a project
+							 }
+							 else {
+								 placeBids();
+							 }
 //							 Register a new bid
 						 }
 						 else if(ch == 1) {
