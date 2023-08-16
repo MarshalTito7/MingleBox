@@ -55,7 +55,8 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 		System.out.println("Press 2 to add project for bidding");
 		System.out.println("Press 3 to view bids");
 		System.out.println("Press 4 to finalise bid");
-		System.out.println("Press 5 to logout");
+		System.out.println("Press 5 to make payment for your completed projects");
+		System.out.println("Press 6 to logout");
 		choice2 = sc.nextInt();
 		System.out.println();
 		return choice2;
@@ -227,11 +228,30 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 	protected void completeProject(String tempWorkingCoder) {
 		System.out.println("Enter the project id on which you were working: ");
 		String tempComp = sc.next();
-		if(detailsOfProjects.containsKey(tempComp) && detailsOfProjects.get(tempComp).getAssignCoder().equalsIgnoreCase(tempWorkingCoder)) {
+		if(coderGang.get(tempWorkingCoder).getWorkingProject() == null) {
+			System.out.println("\nYou have not been assigned this project!");
+		}
+		else if(detailsOfProjects.containsKey(tempComp) && detailsOfProjects.get(tempComp).getAssignCoder().equalsIgnoreCase(tempWorkingCoder)) {
 			detailsOfProjects.get(tempComp).setStatus("Completed");
 			coderGang.get(tempWorkingCoder).setWorkingProject(null);
+			System.out.println("\nThank You!");
 			
 		}
+		else {
+			System.out.println("\nYou have not been assigned this project!");
+		}
+		
+	}
+	
+	private int makePayment(String string) {
+		// TODO Auto-generated method stub
+		int flag = 0;
+		if(detailsOfProjects.get(string).getStatus().equalsIgnoreCase("Completed")) {
+			System.out.println("Thank You for making payment of $"+detailsOfProjects.get(string).getPaymentToBeMade()+" to Coder id: "+detailsOfProjects.get(string).getAssignCoder());
+			flag = 1;
+		}
+		return flag;
+
 		
 	}
 	
@@ -276,7 +296,7 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 						 }
 						 else if(ch==2) {
 							 placeBids();
-//							 Register a new project
+//							 Register a new bid
 						 }
 						 else if(ch == 1) {
 							 int check = searchProjDetails();
@@ -314,8 +334,16 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 //					 Now once we log in successfully, we loop unless the user signs out
 					 while(true) {
 						 ch = printBuyerMenu();
-						 if(ch == 5)
+						 if(ch == 6)
 							 break; //i.e we log out from buyer portal
+						 else if(ch == 5) {
+							 System.out.println("Enter the project id for which you want to make payment: ");
+							 int check = makePayment(sc.next());
+							 if(check == 0) {
+								 System.out.println("Sorry this project has not yet been completed.");
+							 }
+							 
+						 }
 						 else if(ch == 4) {
 							 System.out.println("Enter the project id for which you want to finalise bids: ");
 							 int check = finaliseBid(sc.next());
@@ -349,6 +377,8 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 			
 		}
 	}
+
+
 	
 
 	
