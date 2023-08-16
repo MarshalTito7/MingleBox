@@ -314,6 +314,9 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 					 }
 					
 				 }
+				 else {
+					 System.out.println("\nYou have entered incorrect password!\n");
+				 }
 				 
 				
 			 }	
@@ -335,7 +338,7 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 				 
 				 if(checkPass.equals(buyerGang.get(logEmail).getPassword())) { //Check whether the password matches
 					 System.out.println("Successfully logged in");
-					 System.out.println(buyerGang.get(logEmail).toString());
+//					 System.out.println(buyerGang.get(logEmail).toString());
 					 System.out.println();
 //					 Now once we log in successfully, we loop unless the user signs out
 					 while(true) {
@@ -378,6 +381,9 @@ public class Login extends Register implements menuPrint  { //here we are inheri
 						 
 					 }
 //					 
+				 }
+				 else {
+					 System.out.println("\nYou have entered incorrect password!\n");
 				 }
 			 }
 			
